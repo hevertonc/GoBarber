@@ -37,6 +37,13 @@ describe('ListProviderAppointments', () => {
       month: 5,
     });
 
+    await listProviderAppointments.execute({
+      provider_id: 'provider',
+      day: 20,
+      year: 2020,
+      month: 5,
+    });
+
     expect(availability).toEqual([appointment1, appointment2]);
   });
 });
