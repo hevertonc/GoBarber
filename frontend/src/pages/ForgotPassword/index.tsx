@@ -15,6 +15,7 @@ import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 import { Container, Content, AnimationContainer, Background } from './styles';
+import api from '../../services/api';
 
 interface ForgotPasswordFormData {
   email: string;
@@ -35,11 +36,20 @@ const ForgotPassword: React.FC = () => {
           email: Yup.string()
             .required('Email obrigatório')
             .email('Digite um email válido'),
-          password: Yup.string().required('Senha obrigatória'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
+        });
+
+        await api.post('/password/forgot', {
+          email: data.email,
+        });
+
+        addToast({
+          type: 'success',
+          title: 'E-mail de recuperação enviado',
+          description: `Enviamos um e-mail para ${data.email} com as instruções para alteração de sua senha.`,
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
