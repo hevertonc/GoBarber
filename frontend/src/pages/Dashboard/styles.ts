@@ -27,6 +27,11 @@ export const HeaderContent = styled.div`
       color: #999591;
       width: 20px;
       height: 20px;
+      transition: color linear 0.2s;
+
+      &:hover {
+        color: #ff9000;
+      }
     }
   }
 `;
@@ -52,8 +57,14 @@ export const Profile = styled.div`
       color: #f4ede8;
     }
 
-    strong {
+    a {
       color: #ff9000;
+      text-decoration: none;
+      transition: opacity linear 0.2s;
+
+      &:hover {
+        opacity: 0.6;
+      }
     }
   }
 `;
@@ -157,6 +168,10 @@ export const Section = styled.section`
     display: block;
     padding-bottom: 16px;
     margin-bottom: 16px;
+  }
+
+  > p {
+    color: #999591;
   }
 `;
 
