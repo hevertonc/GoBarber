@@ -10,7 +10,7 @@ const client: RedisClient = new Redis(cacheConfig.config.redis);
 const limiter = new RateLimiterRedis({
   storeClient: client,
   keyPrefix: 'rateLimit',
-  points: 5,
+  points: 20,
   duration: 1,
   blockDuration: 30,
 });
